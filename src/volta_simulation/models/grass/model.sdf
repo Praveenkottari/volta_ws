@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="simple_grass">
+    <static>true</static>
+    <link name="grass_link">
+      <visual name="grass_visual">
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>10 10</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://simple_grass/materials/scripts</uri>
+            <uri>model://simple_grass/materials/textures</uri>
+            <name>Grass/Green</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

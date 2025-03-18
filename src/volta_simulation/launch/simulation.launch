@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- outdoor world spawn pose -->
+    <arg name="outdoor" default="true"/>
+    <arg if="$(arg outdoor)" name="initX" default="0"/>
+    <arg if="$(arg outdoor)" name="initY" default="0"/>
+    <arg if="$(arg outdoor)" name="initYaw" default="0"/>
+
+    <!-- indoor world spawn pose -->
+    <arg name="indoor" default="false"/>
+    <arg if="$(arg indoor)" name="initX" default="0"/>
+    <arg if="$(arg indoor)" name="initY" default="0"/>
+    <arg if="$(arg indoor)" name="initYaw" default="1.5708"/>
+    
+    <!-- office world with non-static models for more realistic collision simulation -->
+    <arg name="office_full" default="false"/>
+    <arg if="$(arg office_full)" name="initX" value="0"/>
+    <arg if="$(arg office_full)" name="initY" value="0"/>
+    <arg if="$(arg office_full)" name="initYaw" value="-1.5708"/> 
+
+    <arg name="model" default="$(find volta_description)/urdf/volta.xacro"/>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)"/>
+
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-urdf -model volta -param robot_description -x $(arg initX) -y $(arg initY) -z 0 -R 0 -P 0 -Y $(arg initYaw)">
+    </node>
+
+    <include file="$(find volta_control)/launch/control.launch" />
+
+    <include file="$(find volta_localization)/launch/localization.launch" />
+
+</launch>
