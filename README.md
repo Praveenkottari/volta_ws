@@ -49,25 +49,18 @@ source volts_ws
 launch gazebo with world  
 ```
  roslaunch volta_simulation gazebo.launch
-
 ```
-
 spawn volta robot
-
 ```
  roslaunch volta_simulation simulation.launch
-
 ```
 For visualization, launch rviz
-
 ```
  rosrun rviz rviz 
-
 ```
 for teleoperation node
 ```
- roslaunch volta_teleoperator teleoperator.launch keyboard:=true
-
+roslaunch volta_teleoperator teleoperator.launch keyboard:=true
 ```
 to move around use,
 * u i o
