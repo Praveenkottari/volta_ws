@@ -1,6 +1,6 @@
-# Volta
+# Volta Simulation
 ROS packages used to run the Volta in simulation
-
+* also need some of the pkgs from **volta** rwquired to run simualtion
 
 
 ## Steps to Launch Volta:
