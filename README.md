@@ -19,4 +19,3 @@ mkdir -p ~/voltasim_ws/src
 ```
 
 steps are coming soon...
->>>>>>> 0b1a66978bd5ccf8dfbea72057c7bc4de22d64f3
